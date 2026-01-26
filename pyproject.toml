@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "ex-proj-estruturado"
+version = "0.1.0"
+description = "Modelo de criação de projeto estruturado com Poetry"
+authors = ["Rogerio <rogerio.tonini@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.3"
+pandas = "^3.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

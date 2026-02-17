@@ -9,8 +9,15 @@ readme = "README.md"
 python = "3.11.3"
 pandas = "^3.0.0"
 openpyxl = "^3.1.5"
+
+
+[tool.poetry.group.tests.dependencies]
 pytest = "^9.0.2"
 
+
+[tool.poetry.group.dev.dependencies]
+isort = "^7.0.0"
+blue = "^0.9.1"
 
 [build-system]
 requires = ["poetry-core"]

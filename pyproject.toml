@@ -10,15 +10,58 @@ python = "3.11.3"
 pandas = "^3.0.0"
 openpyxl = "^3.1.5"
 
-
 [tool.poetry.group.tests.dependencies]
 pytest = "^9.0.2"
 
-
 [tool.poetry.group.dev.dependencies]
 isort = "^7.0.0"
-blue = "^0.9.1"
+flake8 = "^7.3.0"
+flake8-pyproject = "^1.2.4"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# Configuração do BLUE
+[tool.blue]
+line-length     = 79            # Comprimento máximo de linha (PEP 8)
+target-version  = ["py311"]     # Versão alvo do Python
+include         = '\.pyi?$'     # Arquivos a processar
+extend-exclude  = '''           # Diretórios a ignorar
+/(
+  | .venv
+  | .git
+  | __pycache__
+  | build
+  | dist
+)/
+'''
+
+# Configuração do ISORT
+[tool.isort]
+profile = "black"                           # Compatibilidade com blue/black
+multi_line_output = 3                       # Estilo Vertical Hanging Indent
+include_trailing_comma = true               # Vírgula no último item
+force_grid_wrap = 0                         # Sem forçar quebra por quantidade
+line_length = 79                            # Consistente com blue/PEP 8
+known_first_party = ["pipeline", "app"]     # Módulos do projeto
+know_third_party = []
+
+# Configuração do FLAKE8 (requer flake8-pyproject)
+[tool.flake8]
+max-line-length = 79        # Consistente com blue/isort
+statistics = true           # Exibir estatísticas ao final
+count = true                # Exibir contagem total de erros
+# Ignorar erros que conflitam com blue
+# W503 - quebra de linha antes de operador binário
+# E203 - espaço antes de ':' em slices
+ignore = ["W503", "E203"]
+max-complexity = 10         # Complexidade máxima permitida
+# Diretórios a ignorar
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist"
+]

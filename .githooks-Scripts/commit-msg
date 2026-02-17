@@ -15,7 +15,7 @@ if ! [[ $COMMIT_MSG =~ $CONVENTIONAL_COMMIT_REGEX ]]; then
     echo "O formato correto da mensagem de commit é obrigatório:"
     echo "  <tipo>(<escopo opcional>): <descrição>"
     echo
-    echo "Os tipos válidos são:"
+     echo "Os tipos válidos são:"
     echo "  init:     Commit inicial do repositório."
     echo "  feat:     Uma nova funcionalidade."
     echo "  fix:      Correção de um bug."

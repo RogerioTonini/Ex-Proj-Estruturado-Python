@@ -4,11 +4,44 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        // {
+        //     "name": "Python Debugger: Current File",
+        //     "type": "debugpy",
+        //     "request": "launch",
+        //     "program": "${file}",
+        //     "console": "integratedTerminal",
+        //     "cwd": "${workspaceFolder}", // Define o diretório de trabalho para garantir que os imports funcionem corretamente [14]
+        //     "justMyCode": true
+        // },
         {
-            "name": "Python Debugger: Current File",
+            "name": "Python: Executar Root Main",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/app/main.py", // Caminho para o arquivo principal na raiz [12, 13]
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}", // Define o diretório de trabalho para garantir que os imports funcionem corretamente [14]
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Executar App Main",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/app/main.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}" // Garante que a pasta 'app' seja vista como pacote
+            }
+        },
+        {
+            "name": "Python: Rodar Testes (Pytest)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "${workspaceFolder}/tests"
+            ],
             "console": "integratedTerminal"
         }
     ]
